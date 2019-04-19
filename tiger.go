@@ -1,4 +1,4 @@
-package tiger
+package main
 
 import "fmt"
 
