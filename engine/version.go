@@ -19,6 +19,7 @@ type FrameWork struct {
 	Website string `json:"website"`
 }
 
+// showVersionInfo 显示版本信息
 func showVersionInfo() {
 	versionInfo := VersionInfo{}
 	response, err := request.Get("https://karldoenitz.github.io/Tigo-EN/static/data/info.json")
