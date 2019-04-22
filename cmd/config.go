@@ -9,8 +9,8 @@ import (
 )
 
 func init() {
-	pflag.StringP("init", "i", "greatProject", "init a Tigo project / 初始化一个Tigo项目")
-	pflag.Bool("version", false, "show version / 是否显示版本号")
+	pflag.StringP("init", "i", "", "初始化一个Tigo项目 / init a Tigo project")
+	pflag.BoolP("version", "v", false, "是否显示版本号 / show version")
 	pflag.Usage = usage
 	pflag.ErrHelp = errors.New("")
 	pflag.Parse()
@@ -28,9 +28,9 @@ Tigo Commandline Tool
 Usage: tiger [Options]
 
 Options:
-	-i, --inti projection_name init a Tigo projection / 初始化一个Tigo项目
-	-v, --version              show version of Tigo or tiger / 查看Tigo以及tiger的版本号
-	-h, --help                 show help / 查看帮助文档
+	-i, --init projection_name 初始化一个Tigo项目 / init a Tigo projection
+	-v, --version              查看Tigo以及tiger的版本号 / show version of Tigo or tiger
+	-h, --help                 查看帮助文档 / show help
     `)
 	if err != nil {
 		println(err.Error())
