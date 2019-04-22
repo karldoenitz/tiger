@@ -21,13 +21,13 @@ type FrameWork struct {
 
 // showVersionInfo 显示版本信息
 func showVersionInfo() {
+	fmt.Printf("Tigo  local  version: %s\n", TigoWeb.Version)
+	fmt.Printf("tiger local  version: %s\n", Version)
 	versionInfo := VersionInfo{}
 	response, err := request.Get("https://karldoenitz.github.io/Tigo-EN/static/data/info.json")
 	if err != nil {
 		fmt.Println(err.Error())
-		fmt.Printf("Tigo  local  version: %s\n", TigoWeb.Version)
 		fmt.Println("Tigo  latest version: unknown")
-		fmt.Printf("tiger local  version %s\n", Version)
 		fmt.Println("tiger latest version: unknown")
 		return
 	}
@@ -35,8 +35,6 @@ func showVersionInfo() {
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-	fmt.Printf("Tigo  local  version: %s\n", TigoWeb.Version)
 	fmt.Printf("Tigo  latest version: %s\n", versionInfo.Tigo.Version)
-	fmt.Printf("tiger local  version: %s\n", Version)
 	fmt.Printf("tiger latest version: %s\n", versionInfo.Tiger.Version)
 }
