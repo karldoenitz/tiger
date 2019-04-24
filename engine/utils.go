@@ -1,6 +1,7 @@
 package engine
 
 import (
+	"go/build"
 	"os"
 	"path/filepath"
 	"strings"
@@ -12,4 +13,12 @@ func GetCurrentDirectory() string {
 		println(err.Error())
 	}
 	return strings.Replace(dir, "\\", "/", -1) //将\替换成/
+}
+
+func GetGoPath() string {
+	goPath := os.Getenv("GOPATH")
+	if goPath == "" {
+		goPath = build.Default.GOPATH
+	}
+	return goPath
 }
