@@ -8,6 +8,7 @@ import (
 
 // InitProject 初始化项目
 func InitProject() {
+	fmt.Println("init projection start")
 	projectName := viper.GetString("init")
 	projectName = fmt.Sprintf("./%s", projectName)
 	mainFileName := fmt.Sprintf("%s/main.go", projectName)
@@ -22,9 +23,7 @@ func InitProject() {
 	}
 	mainCode := fmt.Sprintf(main, ".")
 	currentPath := GetCurrentDirectory()
-	fmt.Printf("current path: %s\n", currentPath)
 	goPath := GetGoPath()
-	fmt.Printf("go path: %s\n", goPath)
 	if goPath+"/src" == currentPath {
 		mainCode = fmt.Sprintf(main, viper.GetString("init"))
 	}
@@ -38,6 +37,7 @@ func InitProject() {
 	}
 	createConfigFile()
 	createHandlers()
+	fmt.Printf("projection %s created\n", viper.GetString("init"))
 }
 
 // createConfigFile 创建配置文件
