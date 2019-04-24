@@ -22,7 +22,9 @@ func InitProject() {
 	}
 	mainCode := fmt.Sprintf(main, ".")
 	currentPath, _ := os.Getwd()
+	fmt.Printf("current path: %s", currentPath)
 	goPath := os.Getenv("GOPATH")
+	fmt.Printf("current path: %s", goPath)
 	if goPath+"/src" == currentPath {
 		mainCode = fmt.Sprintf(main, viper.GetString("init"))
 	}
