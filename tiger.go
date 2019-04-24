@@ -1,8 +1,8 @@
 package main
 
 import (
-	"tiger/cmd"
-	"tiger/engine"
+	"github.com/karldoenitz/tiger/cmd"
+	"github.com/karldoenitz/tiger/engine"
 )
 
 func main() {
