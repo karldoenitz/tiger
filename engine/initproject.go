@@ -20,7 +20,12 @@ func InitProject() {
 		println(err)
 		return
 	}
-	mainCode := fmt.Sprintf(main, viper.GetString("init"))
+	mainCode := fmt.Sprintf(main, ".")
+	currentPath, _ := os.Getwd()
+	goPath := os.Getenv("GOPATH")
+	if goPath+"/src" == currentPath {
+		mainCode = fmt.Sprintf(main, viper.GetString("init"))
+	}
 	_, err = file.Write([]byte(mainCode))
 	if err != nil {
 		println(err.Error())
