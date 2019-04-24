@@ -3,3 +3,7 @@
 [![Build Status](https://travis-ci.org/karldoenitz/tiger.svg?branch=master)](https://travis-ci.org/karldoenitz/tiger)
 # tiger
 Tigo框架的脚手架工具，用于命令行新建Tigo项目、查看Tigo版本等功能。
+## 使用简介
+安装：`go get github.com/karldoenitz/tiger`  
+如果你本地的Tigo版本小于1.0.6请重新安装最新版本。
+
