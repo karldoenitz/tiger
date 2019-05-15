@@ -6,10 +6,13 @@ import (
 	"os"
 )
 
+var projectionName string
+
 // InitProject 初始化项目
 func InitProject() {
 	fmt.Println("init projection start")
 	projectName := viper.GetString("init")
+	projectionName = projectName
 	projectName = fmt.Sprintf("./%s", projectName)
 	mainFileName := fmt.Sprintf("%s/main.go", projectName)
 	if err := os.Mkdir(projectName, os.ModePerm); err != nil {
@@ -37,6 +40,7 @@ func InitProject() {
 	}
 	createConfigFile()
 	createHandlers()
+	createTemplates()
 	fmt.Printf("projection %s created\n", viper.GetString("init"))
 }
 
@@ -49,7 +53,9 @@ func createConfigFile() {
 		println(err)
 		return
 	}
-	_, err = file.Write([]byte(configuration))
+	projectPath := GetCurrentDirectory() + "/" + projectionName
+	config := fmt.Sprintf(configuration, projectPath)
+	_, err = file.Write([]byte(config))
 	if err != nil {
 		println(err.Error())
 	}
@@ -73,7 +79,30 @@ func createHandlers() {
 		println(err)
 		return
 	}
-	_, err = file.Write([]byte(handler))
+	_, err = file.Write([]byte(fmt.Sprintf(handler, projectName)))
+	if err != nil {
+		println(err.Error())
+	}
+	err = file.Close()
+	if err != nil {
+		println(err.Error())
+	}
+}
+
+// createTemplates 创建模板
+func createTemplates() {
+	staticPath := GetCurrentDirectory() + "/" + projectionName + "/static"
+	if err := os.Mkdir(staticPath, os.ModePerm); err != nil {
+		println(err.Error())
+		return
+	}
+	projectPath := GetCurrentDirectory() + "/" + projectionName + "/static/front.html"
+	file, err := os.OpenFile(projectPath, os.O_RDWR|os.O_CREATE, 0766)
+	if err != nil {
+		println(err)
+		return
+	}
+	_, err = file.Write([]byte(template))
 	if err != nil {
 		println(err.Error())
 	}
