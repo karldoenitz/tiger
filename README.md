@@ -9,6 +9,8 @@ Tigo框架的脚手架工具，用于命令行新建Tigo项目、查看Tigo版�
 ## 命令
 ```
 tiger -i/--init {{projectionName}} 初始化项目
+tiger -u/--update {{tiger|tigo}} 更新tiger或tigo
+tiger -r/--run 运行项目
 tiger -v/--version 查看版本号
 tiger -h/--help 查看帮助
 ```

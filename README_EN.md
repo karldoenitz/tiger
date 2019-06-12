@@ -9,6 +9,8 @@ Please remove your local Tigo framework, if your Tigo's version lower `1.0.6`.
 ## 命令
 ```
 tiger -i/--init {{projectionName}} // init projection
+tiger -u/--update {{tiger|tigo}} // update tiger or tigo
+tiger -r/--run // run projection
 tiger -v/--version // show version info
 tiger -h/--help // show help info
 ```
