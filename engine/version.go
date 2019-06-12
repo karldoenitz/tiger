@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/karldoenitz/Tigo/TigoWeb"
 	"github.com/karldoenitz/Tigo/request"
+	"github.com/spf13/viper"
 )
 
 type VersionInfo struct {
@@ -37,4 +38,22 @@ func showVersionInfo() {
 	}
 	fmt.Printf("Tigo  latest version: %s\n", versionInfo.Tigo.Version)
 	fmt.Printf("tiger latest version: %s\n", versionInfo.Tiger.Version)
+}
+
+func updateFramework() {
+	name := viper.GetString("init")
+	shell := ""
+	switch name {
+	case "tiger":
+		shell = "go get -u github.com/karldoenitz/tiger"
+		break
+	case "tigo":
+		shell = "go get -u github.com/karldoenitz/Tigo/..."
+		break
+	}
+	if err, out, errOut := ShellExecuteEngine(shell + "tiger"); err != nil {
+		println(errOut)
+	} else {
+		println(out)
+	}
 }
